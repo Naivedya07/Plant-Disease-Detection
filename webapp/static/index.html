@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Plant Disease Detection</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header>
+  <div style="font-size:2.5rem">🌿</div>
+  <div>
+    <h1>Plant Disease Detection</h1>
+    <p>AI-powered detection for Pepper, Potato & Tomato diseases </p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Upload Card -->
+  <div class="card">
+    <h2>📷 Upload Leaf Image</h2>
+    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+      <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)"/>
+      <div class="icon">🍃</div>
+      <p>Click to upload or drag & drop</p>
+      <p style="font-size:0.8rem;color:#4a7a4a;margin-top:5px">JPG, PNG supported</p>
+    </div>
+    <img id="preview" alt="Preview"/>
+    <button class="btn" id="predictBtn" onclick="predict()" disabled>
+      🔍 Detect Disease
+    </button>
+  </div>
+
+  <!-- Results Card -->
+  <div class="card">
+    <h2>📊 Detection Results</h2>
+    <div id="results">
+      <div class="placeholder">
+        🌱 Upload a leaf image and click<br>Detect Disease to see results
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Card -->
+  <div class="card full-width">
+    <h2>🤖 Plant Disease Assistant</h2>
+    <div id="statusBar" class="status-bar">
+      💡 Upload and detect a disease first, then ask me anything about it!
+    </div>
+    <div class="chat-box" id="chatBox">
+      <div class="msg bot">
+        <div class="avatar">🌿</div>
+        <div class="bubble">
+          👋 Hello! I'm your Plant Disease Assistant.<br><br>
+          Upload a leaf image first, then you can ask me:<br>
+          • <b>What is the cause?</b><br>
+          • <b>What are the symptoms?</b><br>
+          • <b>How to treat it?</b><br>
+          • <b>How to prevent it?</b>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Ask about the detected disease..."
+             onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

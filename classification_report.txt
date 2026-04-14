@@ -1,0 +1,24 @@
+PLANT DISEASE DETECTION - CLASSIFICATION REPORT
+======================================================================
+
+                                             precision    recall  f1-score   support
+
+              Pepper__bell___Bacterial_spot     0.9613    0.9868    0.9739       151
+                     Pepper__bell___healthy     0.9780    0.9955    0.9867       223
+                      Potato___Early_blight     0.9548    0.9867    0.9705       150
+                       Potato___Late_blight     0.9571    0.8933    0.9241       150
+                           Potato___healthy     0.8519    0.9583    0.9020        24
+                      Tomato_Bacterial_spot     0.9659    0.9750    0.9705       320
+                        Tomato_Early_blight     0.8837    0.7600    0.8172       150
+                         Tomato_Late_blight     0.9236    0.9268    0.9252       287
+                           Tomato_Leaf_Mold     0.9624    0.8889    0.9242       144
+                  Tomato_Septoria_leaf_spot     0.9267    0.9476    0.9370       267
+Tomato_Spider_mites_Two_spotted_spider_mite     0.9469    0.8492    0.8954       252
+                        Tomato__Target_Spot     0.8483    0.8443    0.8463       212
+      Tomato__Tomato_YellowLeaf__Curl_Virus     0.9979    0.9751    0.9864       482
+                Tomato__Tomato_mosaic_virus     0.7917    1.0000    0.8837        57
+                             Tomato_healthy     0.8602    1.0000    0.9249       240
+
+                                   accuracy                         0.9357      3109
+                                  macro avg     0.9207    0.9325    0.9245      3109
+                               weighted avg     0.9374    0.9357    0.9352      3109

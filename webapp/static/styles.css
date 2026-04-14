@@ -1,0 +1,104 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#f6f6f6; color:rgb(254, 254, 254); min-height:100vh; }
+
+header {
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  padding:20px 40px; display:flex; align-items:center; gap:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.4);
+}
+header h1 { font-size:1.8rem; color:#a5d6a7; }
+header p  { font-size:0.9rem; color:#81c784; }
+
+.container { max-width:1100px; margin:30px auto; padding:0 20px; display:grid;
+             grid-template-columns:1fr 1fr; gap:25px; }
+
+.card { background:#1a2e1a; border-radius:16px; padding:25px;
+        border:1px solid #2e4d2e; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+
+.card h2 { color:#81c784; margin-bottom:18px; font-size:1.1rem;
+           display:flex; align-items:center; gap:8px; }
+
+/* Upload Area */
+.upload-area {
+  border:2px dashed #4caf50; border-radius:12px; padding:30px;
+  text-align:center; cursor:pointer; transition:all 0.3s;
+  background:#070f07;
+}
+.upload-area:hover { background:#1a2e1a; border-color:#81c784; }
+.upload-area input { display:none; }
+.upload-area .icon { font-size:3rem; margin-bottom:10px; }
+.upload-area p { color:#81c784; font-size:0.95rem; }
+
+#preview { max-width:100%; max-height:220px; border-radius:10px;
+           margin-top:15px; display:none; border:2px solid #4caf50; }
+
+.btn {
+  width:100%; padding:13px; margin-top:15px; border:none;
+  border-radius:10px; font-size:1rem; font-weight:600; cursor:pointer;
+  background:linear-gradient(135deg,#2e7d32,#4caf50);
+  color:white; transition:all 0.3s;
+}
+.btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(76,175,80,0.4); }
+.btn:disabled { background:#333; color:#666; transform:none; cursor:not-allowed; }
+
+/* Results */
+.result-item {
+  background:#0f1f0f; border-radius:10px; padding:15px;
+  margin-bottom:12px; border-left:4px solid #4caf50;
+}
+.result-item.top { border-left-color:#81c784; background:#1a2e1a; }
+.result-header { display:flex; justify-content:space-between; align-items:center; }
+.result-name { font-weight:600; color:#a5d6a7; font-size:0.95rem; }
+.confidence-badge {
+  background:#2e7d32; color:#a5d6a7; padding:3px 10px;
+  border-radius:20px; font-size:0.85rem; font-weight:600;
+}
+.progress-bar { height:6px; background:#1a2e1a; border-radius:3px; margin:8px 0; }
+.progress-fill { height:100%; border-radius:3px;
+                 background:linear-gradient(90deg,#2e7d32,#81c784); transition:width 1s; }
+
+.disease-info { margin-top:12px; }
+.info-row { display:flex; gap:8px; margin-bottom:6px; font-size:0.85rem; }
+.info-label { color:#4caf50; font-weight:600; min-width:90px; }
+.info-value { color:#c8e6c9; }
+
+/* Chatbot */
+.chat-box {
+  height:300px; overflow-y:auto; background:#0f1f0f;
+  border-radius:10px; padding:15px; margin-bottom:12px;
+  border:1px solid #2e4d2e; scroll-behavior:smooth;
+}
+.msg { margin-bottom:12px; display:flex; gap:8px; }
+.msg.user { flex-direction:row-reverse; }
+.msg .bubble {
+  max-width:80%; padding:10px 14px; border-radius:12px;
+  font-size:0.88rem; line-height:1.5;
+}
+.msg.bot  .bubble { background:#1a2e1a; color:#c8e6c9; border-radius:4px 12px 12px 12px; }
+.msg.user .bubble { background:#2e7d32; color:white; border-radius:12px 4px 12px 12px; }
+.avatar { width:30px; height:30px; border-radius:50%; display:flex;
+          align-items:center; justify-content:center; font-size:1rem;
+          background:#2e4d2e; flex-shrink:0; }
+
+.chat-input { display:flex; gap:10px; }
+.chat-input input {
+  flex:1; padding:11px 15px; border-radius:10px; border:1px solid #2e4d2e;
+  background:#0f1f0f; color:#e8f5e9; font-size:0.9rem; outline:none;
+}
+.chat-input input:focus { border-color:#4caf50; }
+.chat-input button {
+  padding:11px 18px; border-radius:10px; border:none;
+  background:#2e7d32; color:white; cursor:pointer; font-size:1rem;
+  transition:background 0.3s;
+}
+.chat-input button:hover { background:#4caf50; }
+
+.placeholder { color:#4a7a4a; text-align:center; margin-top:40px; font-size:0.9rem; }
+.loading { text-align:center; color:#81c784; padding:20px; }
+.spinner { display:inline-block; width:24px; height:24px; border:3px solid #2e4d2e;
+           border-top-color:#4caf50; border-radius:50%; animation:spin 0.8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.full-width { grid-column:1/-1; }
+.status-bar { background:#1a2e1a; border-radius:8px; padding:8px 15px;
+              font-size:0.82rem; color:#81c784; margin-bottom:15px; }

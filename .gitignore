@@ -1,0 +1,16 @@
+﻿dataset/
+PlantVillage/
+saved_models/
+uploads/
+*.zip
+*.h5
+*.keras
+*.weights.h5
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.DS_Store
+*.log
+*.tmp
