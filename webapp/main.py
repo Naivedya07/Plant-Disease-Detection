@@ -1,4 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
+import gdown
+import os
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,7 +22,21 @@ app.add_middleware(
 )
 
 # ── Rebuild model architecture & load weights ──
-WEIGHTS_PATH     = r"D:\6th Sem\Project - II\saved_models\plant_disease_weights.weights.h5"
+DRIVE_FILE_ID  = "1K98p7XcEXNaeXHUp-k_lBIlqfVMBsfsi"
+
+# Check local path first, then download if not found
+LOCAL_WEIGHTS  = r"D:\6th Sem\Project - II\saved_models\plant_disease_weights.weights.h5"
+WEIGHTS_PATH   = "plant_disease_weights.weights.h5"
+
+if os.path.exists(LOCAL_WEIGHTS):
+    WEIGHTS_PATH = LOCAL_WEIGHTS
+    print("✅ Using local weights!")
+elif not os.path.exists(WEIGHTS_PATH):
+    print("Downloading model weights from Google Drive...")
+    gdown.download(f"https://drive.google.com/uc?id={DRIVE_FILE_ID}",
+                   WEIGHTS_PATH, quiet=False)
+    print("✅ Weights downloaded!")
+    
 CLASS_NAMES_PATH = r"D:\6th Sem\Project - II\saved_models\class_names.txt"
 NUM_CLASSES      = 15
 IMG_SHAPE        = (224, 224, 3)
@@ -149,7 +165,7 @@ DISEASE_INFO = {
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    with open(r"D:\6th Sem\Project - II\webapp\static\index.html", "r", encoding="utf-8") as f:
+    with open(os.path.join(os.path.dirname(__file__), "static", "index.html"), "r", encoding="utf-8") as f:
         return f.read()
 
 @app.post("/predict")
@@ -204,4 +220,5 @@ async def chat(data: dict):
 
     return JSONResponse({"reply": reply})
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
