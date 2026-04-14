@@ -36,8 +36,8 @@ elif not os.path.exists(WEIGHTS_PATH):
     gdown.download(f"https://drive.google.com/uc?id={DRIVE_FILE_ID}",
                    WEIGHTS_PATH, quiet=False)
     print("✅ Weights downloaded!")
-    
-CLASS_NAMES_PATH = r"D:\6th Sem\Project - II\saved_models\class_names.txt"
+
+CLASS_NAMES_PATH = os.path.join(os.path.dirname(__file__), "class_names.txt")
 NUM_CLASSES      = 15
 IMG_SHAPE        = (224, 224, 3)
 
